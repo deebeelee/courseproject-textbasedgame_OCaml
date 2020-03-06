@@ -1,0 +1,340 @@
+{
+  "rooms":
+  [{
+      "id": "Start",
+      "description": "You raise your tired eyes from the moniter and see the clock: 10:50 pm.
+You need a break from this stuffy dorm room and A2. Yes, even the wonder which
+is functional programming can be too much.
+
+You think of boba.
+
+You are determined.
+
+As you try to leave the room, your roommate asks if you can get a cup of
+boba for him too. You agree. He says he will Venmo you later.
+
+___________________________________________________________________________
+
+DIRECTION:
+
+Look for *starred* or CAPITALIZED words that denote either relevant items or
+legal directions. In-game keywords you can use are \"drop\", \"take\",
+\"inspect\", \"look at\", \"go \"+a legal direction (or the direction by itself),
+\"inventory\" (or \"inv\"), \"look\", \"score\", \"turns\", and \"quit\".
+
+Check your inventory!
+
+Enter START to start the game!",
+      "points": 0,
+      "exits": [
+        {
+          "direction": "start",
+          "room_id": "Dorm"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Dorm",
+      "description": "
+You realize that since your roommate is inside the room, you won't need your
+*keys*. So you LEAVE them in the room.
+
+The door leads OUTSIDE to the hallway.",
+      "points": 0,
+      "exits": [
+        {
+          "direction": "outside",
+          "room_id": "Commons"
+        },
+        {
+          "direction": "o",
+          "room_id": "Commons"
+        },
+        {
+          "direction": "out",
+          "room_id": "Commons"
+        }
+      ],
+      "treasure": ["keys"]
+    },
+    {
+      "id": "Commons",
+      "description": "The hallway feels much nicer than your room. You definitely feel better
+than being INSIDE your rooom.
+
+You walk NORTH towards the stairs.",
+      "points": 100,
+      "exits": [
+        {
+          "direction": "inside",
+          "room_id": "Dorm"
+        },
+        {
+          "direction": "i",
+          "room_id": "Dorm"
+        },
+        {
+          "direction": "in",
+          "room_id": "Dorm"
+        },
+        {
+          "direction": "north",
+          "room_id": "Stairway"
+        },
+        {
+          "direction": "n",
+          "room_id": "Stairway"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Stairway",
+      "description": "You can go UP to see a friend of yours who also madly loves boba--
+who actually loves boba more than you. At first it seemed impossible, but
+you slowly accepted her superiority in boba fandom.
+
+Going DOWN leads to the ground floor and outside the dorm.",
+      "points": 100,
+      "exits": [
+        {
+          "direction": "up",
+          "room_id": "Friend's room"
+        },
+        {
+          "direction": "u",
+          "room_id": "Friend's room"
+        },
+        {
+          "direction": "down",
+          "room_id": "Collegetown streets"
+        },
+        {
+          "direction": "d",
+          "room_id": "Collegetown streets"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Friend's room",
+      "description": "You talk to your friend. When you tell her that you are going to
+get boba, her face slightly shivers from the chaotic mixture of desire
+and restraint. After a few seconds, she shakes her head.
+This is quite surprising.
+
+Respecting her decision, you walk DOWN the stairs, out into the streets.",
+      "points": 0,
+      "exits": [
+        {
+          "direction": "down",
+          "room_id": "Collegetown streets"
+        },
+        {
+          "direction": "d",
+          "room_id": "Collegetown streets"
+        },
+        {
+          "direction": "u",
+          "room_id": "Collegetown streets"
+        },
+        {
+          "direction": "up",
+          "room_id": "Collegetown streets"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Collegetown streets",
+      "description": "The air is oddly cool for a September day. The gorge silently roars
+underneath. In it there was a crystallized beauty that you don't notice
+anymore because you got used to it. You think to yourself that one day you
+should bring out your guitar and relax in the natural scene. Towards your BACK
+is your dorm, whose architecture fits so well with the view.
+
+But now is not the time. Your mind is set on only one thing now.
+
+You ask yourself which one you want to go to:
+Kung Fu Tea that is to the LEFT, or Panda Tea Lounge to the RIGHT.",
+      "points": 100,
+      "exits": [
+        {
+          "direction": "left",
+          "room_id": "Kung Fu Tea"
+        },
+        {
+          "direction": "l",
+          "room_id": "Kung Fu Tea"
+        },
+        {
+          "direction": "right",
+          "room_id": "Panda Tea Lounge, counter"
+        },
+        {
+          "direction": "r",
+          "room_id": "Panda Tea Lounge, counter"
+        },
+        {
+          "direction": "back",
+          "room_id": "Commons"
+        },
+        {
+          "direction": "b",
+          "room_id": "Commons"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Kung Fu Tea",
+      "description": "It was only when you stood in front of that cold, closed door, did you
+realize that Kung Fu Tea doesn't stay open this late.
+
+However, you are determined to get that boba. So you turn BACK.",
+      "points": 0,
+      "exits": [
+        {
+          "direction": "back",
+          "room_id": "Collegetown streets"
+        },
+        {
+          "direction": "b",
+          "room_id": "Collegetown streets"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Panda Tea Lounge, counter",
+      "description": "You arrive at Panda Tea Lounge. The warmth and scent enwraps you in a
+state of bliss. The anticipation builds up. It is a bit late in the night,
+so there aren't that many people inside. The cashier recognizes you,
+mostly because you come so often. The coolness from OUTSIDE seeps in.
+
+You first check if you brought your *money* with you from the dorm.
+
+You give the *money* to the cashier and proceed to PAY.",
+      "points": 1000,
+      "exits": [
+        {
+          "direction": "pay",
+          "room_id": "Panda Tea Lounge, paid"
+        },
+        {
+          "direction": "outside",
+          "room_id": "Collegetown streets"
+        },
+        {
+          "direction": "out",
+          "room_id": "Collegetown streets"
+        },
+        {
+          "direction": "o",
+          "room_id": "Collegetown streets"
+        }
+      ],
+      "treasure": ["money"]
+    },
+    {
+      "id": "Panda Tea Lounge, paid",
+      "description": "After what felt like an eternity, the worker calls your order number.
+You excitedly go up towards her and see two cups of boba.
+
+You behold the hue of the liquid that reminds you of the late sunset you
+saw on the way back from classes. You feel your exhaustion fade away.
+The dark-colored bubbles poised geometrically on top of one another give
+you vague ideas on how to implement your TAG for CS 3110.
+
+You want to drink your boba here, but you decide you'd like to share this
+experience with your roommate. So you take the *boba* and head back OUTSIDE.",
+      "points": 100000,
+      "exits": [
+        {
+          "direction": "outside",
+          "room_id": "Collegetown streets, after"
+        },
+        {
+          "direction": "out",
+          "room_id": "Collegetown streets, after"
+        },
+        {
+          "direction": "o",
+          "room_id": "Collegetown streets, after"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Collegetown streets, after",
+      "description": "You shiver slightly from the cool wind and the icy cups of boba in your hands,
+but you are content. Complete serenity overtakes you, and you appreciate
+once again the gorge and the trees as you walk past them.
+
+You make sure you got your roommate's boba with you too. You look BEHIND
+at Panda Tea Lounge.
+
+You walk towards your dorm and take the stairs UP to your room.",
+      "points": 100,
+      "exits": [
+        {
+          "direction": "up",
+          "room_id": "Dorm, after"
+        },
+        {
+          "direction": "u",
+          "room_id": "Dorm, after"
+        },
+        {
+          "direction": "behind",
+          "room_id": "Panda Tea Lounge, paid"
+        },
+        {
+          "direction": "b",
+          "room_id": "Panda Tea Lounge, paid"
+        }
+      ],
+      "treasure": []
+    },
+    {
+      "id": "Dorm, after",
+      "description": "You return to your room, triumphant and calm. You briefly admire your cup and proceed to inhale it.
+The moment, with the flavorings and ice swirling like gold in your mouth,
+feels just as eternal as time you waited for it.
+
+You *give* your roommate his cup of -boba-. The night grew pleasantly old.",
+      "points": 100000,
+      "exits": [],
+      "treasure": ["boba"]
+    }
+  ],
+  "start_room": "Start",
+  "items":
+  [
+    {
+      "id": "keys",
+      "description": "room keys that dangle from a metal ring",
+      "points": 100
+    },
+    {
+      "id": "money",
+      "description": "you need this to participate in any economic activity, but the only thing
+you care about at the moment is buying that boba.",
+      "points": 37500
+    },
+    {
+      "id": "boba",
+      "description": "the sweetest of delights on a late CS nights",
+      "points": 1000000
+    }
+  ],
+  "start_locations": [{
+    "room": "Dorm",
+    "item": "money"
+  }, {
+    "room": "Panda Tea Lounge, paid",
+    "item": "boba"
+  }],
+  "start_inv": ["keys"]
+}

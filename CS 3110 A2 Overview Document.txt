@@ -1,0 +1,135 @@
+CS 3110 Fall 2016
+Assignment 2 : Adventure
+
+Overview Document
+by Dongbin (DB) Lee : dl654
+
+-----------------------------------------------------------------------
+
+Summary:
+
+  This assignment relied heavily on the coder's aptitude with json data
+and general gaming design, of which I had neither. So a major part of my
+time was devoted to nicely extracting data from json and packaging in a
+way that is complete and easy to handle later on.
+
+  The greater difficulty of the two was, as expected, dealing with json.
+The Yojson.Basic module provided a nice way to convert into ocaml types,
+but without caution it was very easy to end up with nested lists that
+are inconvenient to handle.
+
+  Because I spent so much time on reading data into a game state, the
+other important functionalities--repl and do' had comparatively less
+attention. The command parsing happens mostly in the do' function,
+making do' very convoluted.
+
+  There are no known problems.
+
+-----------------------------------------------------------------------
+
+Specification:
+
+  There was very little limitations on how to implement each step of a
+Text Adventure Game (TAG). Much of data storage and error handling was
+almost entirely up to the coder.
+
+  A game state is a package of data that contains the current game
+conditions and possibly the information about the entire game or "map".
+The getters are specified well. The do' function takes a command and
+outputs a corresponding state. In order to do so, one must parse the
+command for specific keywords such as "drop", or raise an exception in
+the case of illegal moves that are dealt with to display appropriate
+error messages.
+
+  Calling the main function prompts the user to load a json file, from
+which an initial state is formed. Then the repl loop conducts the game.
+
+-----------------------------------------------------------------------
+
+Design and Implementation.
+
+  The Map.Make module is used extensively. In my solution, dictionaries
+help with frequent searches such as looking up a room's description or
+the point value of an item. A mock hashtable, a dictionary mapping keys
+to an arbitrary number--I chose 1--lets me check for its elements.
+Map.Make(String), which I named S_Map, takes in string keywords and
+returns a corresponding value.
+
+  Each room, item, and state are records. A room type contains its
+description, point value upon visiting, a dictionary that maps legal
+directions to connecting rooms, and a hashtable for treasure. An item type
+contains its description and point value upon dropping in its treasure room.
+  A state type stores the maximum score, dictionary of rooms, dictionary of
+items, current score, turns, current room_id, inventory, a hashtable of
+visited rooms, and a dictionary of item's locations:
+
+  type state= { max_score: int;
+                rooms: room S_Map.t; (* Maps room to its information record *)
+                items: item S_Map.t; (* Maps item to its information record *)
+
+                score: int;
+                turns: int;
+                room_now: string;
+                inv: int S_Map.t;       (* Hashtable of items*)
+                visited: int S_Map.t;   (* Hashtable of room_ids*)
+                i_loc: string S_Map.t;  (* Maps item to its location*)
+              }
+
+  The hardest part was reading the json data and putting them into Maps.
+For convenience, I used room_maker and item maker functions that construct
+record types from multiple lists containing data. The functions exploit
+the fact that the lists of fields must have the same length, given that
+each field is required in every room or item.
+
+  Gameplay involves updating the state according to commands and returning
+the new state. The function do' takes string inputs and looks for keywords.
+The legality of a move is written in the specification. For different
+types of illegal moves, it raises different exception types that are later
+matched to return their own error prompt in-game.
+
+  The repl loop recursively processes user input until conditions are met:
+the user quit or won the game. It handles errors and displays messages.
+
+-----------------------------------------------------------------------
+
+Testing
+
+  First, I manually constructed the layout given by "tworoom.json" and
+compated it with the one generated in the state object. This involved
+checking every field. Constructing the dictionaries by hand was tedious.
+
+  To test do', I made a few game states resulting from legal moves and
+compared them with expected result, focusing on the change of each field.
+Static commands that should not change the state did not change the state.
+Active commands such as take, drop, and go correctly changed turns, score,
+and other fields. This part of testing was the most substantial.
+
+  A part of testing was devoted to error handling. I came up with
+different illegal moves that should return different messages.
+
+  All of the test cases worked. Most of them worked at one go, thankfully.
+
+-----------------------------------------------------------------------
+
+Work plan
+
+  This was a solo assignement.
+
+  The plan I had for myself was to invest heavily on constructing state,
+and less on the actual gameplay.
+
+-----------------------------------------------------------------------
+
+Known Problems
+
+  There are none as far as I know.
+
+-----------------------------------------------------------------------
+
+Comments
+
+  The interactive aspects of this project were truly fun. I wish I
+planned more efficiently so there would have been time to try out the
+karma functionalities, especially 'save' and 'continue'.
+
+  It would have been nice to have more guidance on processing json.

@@ -1,0 +1,43 @@
+{
+	"rooms": [{
+		"id": "room1",
+		"description": "This is Room 1.  There is an exit to the north.\nYou should drop the white hat here.",
+		"points": 1,
+		"exits": [{
+			"direction": "north",
+			"room_id": "room2"
+		}],
+		"treasure": ["white hat","red hat"]
+	}, {
+		"id": "room2",
+		"description": "This is Room 2.  There is an exit to the south.\nYou should drop the black hat here.",
+		"points": 10,
+		"exits": [{
+			"direction": "south",
+			"room_id": "room1"
+		}],
+		"treasure": ["black hat"]
+	}],
+	"start_room": "room1",
+	"items": [{
+		"id": "black hat",
+		"description": "a black fedora",
+		"points": 100
+	}, {
+		"id": "white hat",
+		"description": "a white panama",
+		"points": 1000
+	}, {
+		"id": "red hat",
+		"description": "a red fez",
+		"points": 10000
+	}],
+	"start_inv": ["white hat"],
+	"start_locations": [{
+		"room": "room1",
+		"item": "black hat"
+	}, {
+		"room": "room1",
+		"item": "red hat"
+	}]
+}

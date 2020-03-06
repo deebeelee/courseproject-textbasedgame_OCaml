@@ -1,0 +1,20 @@
+{
+  "rooms": [{
+    "id": "room1",
+    "description": "Room 1",
+    "points": 10,
+    "exits": [],
+    "treasure": ["item1"]
+  }],
+  "start_room": "room1",
+  "items": [{
+    "id": "item1",
+    "description": "item 1",
+    "points": 100
+  }],
+  "start_inv": [],
+  "start_locations": [{
+    "room": "room1",
+    "item": "item1"
+  }]
+}
